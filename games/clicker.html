@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Clicker - RomarioDevs</title>
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#0f172a;color:#e6eef8}
+    .card{background:linear-gradient(135deg,#0ea5e9, #7c3aed);padding:28px;border-radius:12px;box-shadow:0 10px 30px rgba(2,6,23,.6);text-align:center}
+    button{font-size:20px;padding:12px 20px;border-radius:8px;border:0;cursor:pointer}
+    .count{font-size:48px;margin:12px 0;font-weight:700}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Clicker</h1>
+    <div class="count" id="count">0</div>
+    <button id="btn">Clique!</button>
+    <p style="opacity:.9;margin-top:12px">Melhore a sua pontuação e divirta-se.</p>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btn');
+    const countEl = document.getElementById('count');
+    let count = 0;
+
+    btn.addEventListener('click', ()=>{
+      count++;
+      countEl.textContent = count;
+      btn.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.08)' },
+        { transform: 'scale(1)' }
+      ], { duration: 160, easing: 'ease-out' });
+    });
+
+    // Atalho com tecla de espaço
+    window.addEventListener('keydown', (e)=>{
+      if(e.code === 'Space'){
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  </script>
+</body>
+</html>
